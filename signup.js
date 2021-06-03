@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import {ThemeProvider, Text, Input, Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {TouchableOpacity, Linking} from 'react-native';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scrollview';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import {firebase} from '../firebase/config';
 
 
@@ -37,20 +39,23 @@ export default function Signup({nav}){
       const usersRef= firebase.firestore().collection('users');
       usersRef.doc(uid)
       .set(data)
-      .then(()=>alert("success"))
+      .then(()=>alert("success")) // change this line based on your project requirement 
       .catch(err=>alert(err))
     })
     .catch(err=>alert(err))
   }
   
   return(
+  <SafeAreaProvider>
     <ThemeProvider>
+    <KeyboardAwareScrollView>
       <Text h2>Please Signup</Text>
       <Input placeholder='First name' onChangeText={onChangeFirstName} />
       <Input placeholder='Last name' onChangeText={onChangeLastName} />
       <Input placeholder='Email address' onChangeText={onChangeEmail} leftIcon={{ type: 'font-awesome', name:'envelope' }}/>
       <Input placeholder='Mobile number' onChangeText={onChangeMobile} leftIcon={{ type: 'font-awesome', name:'phone' }}/>
-      <Input placeholder='Password' onChangeText={onChangePassword} secureTextEntry={true} leftIcon={{ type: 'font-awesome', name:'lock'}}/>  
+      <Input placeholder='Password' onChangeText={onChangePassword} secureTextEntry={true} leftIcon={{ type: 'font-awesome', name:'lock'}}/>
+     </KeyboardAwareScrollView>
       <Button title="Signup" onPress={onPressSignup}/>
       <Text>
         <Text> Have an account?</Text>
@@ -58,6 +63,7 @@ export default function Signup({nav}){
           <Text style={{color:"blue"}}> Login here</Text>
         </TouchableOpacity>                
       </Text>      
-    </ThemeProvider>  
+    </ThemeProvider>
+   </SafeAreaProvider>
   )
 }
