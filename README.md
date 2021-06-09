@@ -87,11 +87,9 @@ export default function Signup({nav}){
     }))
   } 
 
-  // Send data to firebase 
-  // if all information is given
-  // if not send error alert
-  // with invalid input data list
-
+  // Send data to firebase if all information is given
+  // if not,  send error alert and a list of invalid input data
+  
   function onPressSignup(){
     
     //check and send input error if any
