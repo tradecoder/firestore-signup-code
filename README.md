@@ -88,8 +88,8 @@ export default function Signup({nav}){
   } 
 
   // Send data to firebase if all information is given
-  // if not,  send error alert and a list of invalid input data
-  
+  // if not send error alert and a list of invalid input
+
   function onPressSignup(){
     
     //check and send input error if any
@@ -121,7 +121,7 @@ export default function Signup({nav}){
       <Text>{showInvalidDataList()}</Text>
       <Input placeholder='First name' value={firstName} onChangeText={onChangeFirstName} />
       <Input placeholder='Last name' value={lastName} onChangeText={onChangeLastName} />
-      <Input placeholder='Gmail address' onChangeText={onChangeEmail} leftIcon={{ type: 'font-awesome', name:'envelope' }}/>
+      <Input placeholder='Gmail address' onChangeText={onChangeEmail} maxLength={35} leftIcon={{ type: 'font-awesome', name:'envelope' }}/>
       <Input placeholder='Mobile number' value={mobile} keyboardType="number-pad" maxLength={11} onChangeText={onChangeMobile} leftIcon={{ type: 'font-awesome', name:'phone' }}/>
       <Input placeholder='Password' onChangeText={onChangePassword} secureTextEntry={true} leftIcon={{ type: 'font-awesome', name:'lock'}}/>  
       <Button title="Signup" onPress={onPressSignup}/>
