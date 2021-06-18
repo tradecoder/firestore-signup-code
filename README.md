@@ -1,7 +1,7 @@
 # firestore-signup-code
-Signup code with firestore and react native
-// using react-native-elements for UI 
-// React Navigation for navigation
+Signup code with firestore and react native 
+* Using react-native-elements for UI 
+* React Navigation for navigation
 
 ```javascript
 import React, { useState } from 'react';
